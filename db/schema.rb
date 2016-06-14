@@ -11,31 +11,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
-  create_table :users, force: true do |t|
-    t.string :email
-    t.string :display_name
-    t.string :password_hash
-    t.timestamps
+ActiveRecord::Schema.define(version: 20160614193019) do
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "song_id"
+    t.string   "review_title"
+    t.string   "review_body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table :songs, force: true do |t|
-    t.references :user
-    t.string     :title
-    t.string     :artist
-    t.timestamps
+  create_table "songs", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "artist"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table :upvotes, force: true do |t|
-    t.references :user
-    t.references :song
-    t.timestapms
+  create_table "upvotes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "song_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table :reviews, force: true do |t|
-    t.references :user
-    t.references :song
-    t.string     :review_title
-    t.string     :review_body
+  create_table "users", force: :cascade do |t|
+    t.string   "email"
+    t.string   "display_name"
+    t.string   "password_hash"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
+
 end
