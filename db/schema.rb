@@ -12,5 +12,30 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 0) do
+  create_table :users, force: true do |t|
+    t.string :email
+    t.string :display_name
+    t.string :password_hash
+    t.timestamps
+  end
 
+  create_table :songs, force: true do |t|
+    t.references :user
+    t.string     :title
+    t.string     :artist
+    t.timestamps
+  end
+
+  create_table :upvotes, force: true do |t|
+    t.references :user
+    t.references :song
+    t.timestapms
+  end
+
+  create_table :reviews, force: true do |t|
+    t.references :user
+    t.references :song
+    t.string     :review_title
+    t.string     :review_body
+  end
 end
