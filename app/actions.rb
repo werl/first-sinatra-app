@@ -6,9 +6,20 @@ get '/' do
 end
 
 get '/login' do
-   
+  erb :login  
+end
+
+post '/login' do
+  "Hello World"
+end
+
+get '/create_account' do
+  erb :create_account
+end
+
+post '/create_account' do
+  "Hello World"
 end
 
 before do
-  cookies[:page_views] ? cookies[:page_views] = cookies[:page_views].to_i + 1 : cookies[:page_views] = 1
 end
